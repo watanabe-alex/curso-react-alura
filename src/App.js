@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react';
+import 'materialize-css/dist/css/materialize.min.css';
 import './App.css';
-import Tabela from './Tabela';
 
+import Header from './Header';
+import Tabela from './Tabela';
 import Form from './Formulario';
 
 class App extends Component {
@@ -10,29 +12,29 @@ class App extends Component {
 
         autores: [
             {
-            nome: 'Paulo',
-            livro: 'React',
-            preco: '1000'
+                nome: 'Paulo',
+                livro: 'React',
+                preco: '1000'
             },
             {
-            nome: 'Daniel',
-            livro: 'Java',
-            preco: '99'
+                nome: 'Daniel',
+                livro: 'Java',
+                preco: '99'
             },
             {
-            nome: 'Marcos',
-            livro: 'Design',
-            preco: '150'
+                nome: 'Marcos',
+                livro: 'Design',
+                preco: '150'
             },
             {
-            nome: 'Bruno',
-            livro: 'DevOps',
-            preco: '100'
+                nome: 'Bruno',
+                livro: 'DevOps',
+                preco: '100'
             },
             {
-            nome: 'Nico',
-            livro: 'Java',
-            preco: '999'
+                nome: 'Nico',
+                livro: 'Java',
+                preco: '999'
             }
         ],
 
@@ -58,8 +60,11 @@ class App extends Component {
     render(){
         return (
             <Fragment>
-                <Tabela autores={this.state.autores} removeAutor={this.removeAutor} />
-                <Form escutadorDeSubmit={this.escutadorDeSubmit} />
+                <Header />
+                <div className="container mb-10">
+                    <Tabela autores={this.state.autores} removeAutor={this.removeAutor} />
+                    <Form escutadorDeSubmit={this.escutadorDeSubmit} />
+                </div>
             </Fragment>
         );
     };
