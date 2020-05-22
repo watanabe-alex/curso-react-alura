@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import 'materialize-css/dist/css/materialize.min.css';
 import './App.css';
+import PopUp from './PopUp';
 
 import Header from './Header';
 import Tabela from './Tabela';
@@ -51,10 +52,13 @@ class App extends Component {
                 }),
             }
         );
+
+        PopUp.exibeMensagem("error", "Autor removido com sucesso");
     };
 
     escutadorDeSubmit = autor=> {
         this.setState({ autores: [...this.state.autores, autor] });
+        PopUp.exibeMensagem("success", "Autor adicionado com sucesso");
     };
 
     render(){
