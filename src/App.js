@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import 'materialize-css/dist/css/materialize.min.css';
 import './App.css';
 import PopUp from './PopUp';
-
 import Header from './Header';
 import Tabela from './Tabela';
 import Form from './Formulario';
@@ -66,6 +65,7 @@ class App extends Component {
             <Fragment>
                 <Header />
                 <div className="container mb-10">
+                    <h1>Casa do Código</h1>
                     <Tabela autores={this.state.autores} removeAutor={this.removeAutor} />
                     <Form escutadorDeSubmit={this.escutadorDeSubmit} />
                 </div>
