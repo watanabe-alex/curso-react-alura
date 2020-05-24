@@ -12,13 +12,13 @@ const TableHead = ()=>{
 }
 
 const TableBody = (props)=>{
-    const linhas = props.autores.map((linha, index) => {
+    const linhas = props.autores.map(linha => {
         return (
-            <tr key={index}>
+            <tr key={linha.id}>
                 <td>{linha.nome}</td>
                 <td>{linha.livro}</td>
                 <td>{linha.preco}</td>
-                <th className="center"><button className='waves-effect waves-light btn indigo lighten-2' onClick = {()=>{ props.removeAutor(index) }}>Remover</button></th>
+                <th className="center"><button className='waves-effect waves-light btn indigo lighten-2' onClick = {()=>{ props.removeAutor(linha.id) }}>Remover</button></th>
             </tr>
         );
     })
