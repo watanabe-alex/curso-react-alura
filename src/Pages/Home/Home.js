@@ -37,7 +37,7 @@ class App extends Component {
     escutadorDeSubmit = autor=> {
         ApiService.CriaAutor(JSON.stringify(autor))
                 .then(res =>  {
-                    console.log(res);
+                    //console.log(res);
                     if (res.message === 'success') {
                         this.setState({ autores: [...this.state.autores, res.data] });
                         PopUp.exibeMensagem("success", "Autor adicionado com sucesso");
@@ -58,12 +58,16 @@ class App extends Component {
 
     render(){
 
+        const campos = [{ titulo: 'Autores', dado: 'nome' },
+                        { titulo: 'Livros', dado: 'livro' },
+                        { titulo: 'Preços', dado: 'preco' }];
+
         return (
             <Fragment>
                 <Header />
                 <div className="container mb-10">
                     <h1>Casa do Código</h1>
-                    <Tabela autores={this.state.autores} removeAutor={this.removeAutor} />
+                    <Tabela campos = {campos} dados={this.state.autores} removeDados={this.removeAutor} />
                     <Form escutadorDeSubmit={this.escutadorDeSubmit} />
                 </div>
             </Fragment>
