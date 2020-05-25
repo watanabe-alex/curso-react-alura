@@ -1,34 +1,6 @@
 import React, { Component } from 'react';
-
-const TableHead = ()=>{
-    return(<thead>
-                <tr>
-                    <th>Autores</th>
-                    <th>Livros</th>
-                    <th>Preços</th>
-                    <th>Remover</th>
-                </tr>
-            </thead>);
-}
-
-const TableBody = (props)=>{
-    const linhas = props.autores.map(linha => {
-        return (
-            <tr key={linha.id}>
-                <td>{linha.nome}</td>
-                <td>{linha.livro}</td>
-                <td>{linha.preco}</td>
-                <th className="center"><button className='waves-effect waves-light btn indigo lighten-2' onClick = {()=>{ props.removeAutor(linha.id) }}>Remover</button></th>
-            </tr>
-        );
-    })
-
-    return(
-        <tbody>
-            {linhas}
-        </tbody>
-    );
-}
+import { Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
 
 class Tabela extends Component{
 
@@ -37,10 +9,34 @@ class Tabela extends Component{
         const { autores, removeAutor } = this.props;
 
         return(
-            <table className='centered highlight'>
-                <TableHead />
-                <TableBody autores = {autores} removeAutor = { removeAutor } />
-            </table>
+            <Table>
+
+                <TableHead>
+                    <TableRow>
+                        <TableCell>Autores</TableCell>
+                        <TableCell>Livros</TableCell>
+                        <TableCell>Preços</TableCell>
+                        <TableCell>Remover</TableCell>
+                    </TableRow>
+                </TableHead>
+
+                <TableBody>
+                    { autores.map(autor => (
+                        <TableRow key={autor.id}>
+                            <TableCell>{autor.nome}</TableCell>
+                            <TableCell>{autor.livro}</TableCell>
+                            <TableCell>{autor.preco}</TableCell>
+                            <TableCell>
+                                <Button onClick = {()=>{ removeAutor(autor.id) }}
+                                        variant="contained" color="primary">
+                                    Remover
+                                </Button>
+                            </TableCell>
+                        </TableRow>
+                    ))}
+                </TableBody>
+
+            </Table>
         );
     }
 
